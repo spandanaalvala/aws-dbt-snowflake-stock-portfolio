@@ -1,0 +1,95 @@
+version: 2
+
+models:
+
+  - name: dim_stock
+    description: "Dimension table containing unique stocks."
+
+    columns:
+      - name: STOCK_SK
+        description: "Surrogate key for stock."
+        tests:
+          - unique
+          - not_null
+
+      - name: TICKER
+        description: "Unique stock ticker."
+
+      - name: SECTOR
+        description: "Business sector."
+
+  - name: dim_date
+    description: "Date dimension used for reporting."
+
+    columns:
+      - name: DATE_SK
+        description: "Date surrogate key."
+
+      - name: DATE
+        description: "Trading date."
+
+      - name: YEAR
+        description: "Calendar year."
+
+      - name: MONTH
+        description: "Calendar month."
+
+  - name: dim_portfolio
+    description: "Portfolio holdings dimension."
+
+    columns:
+      - name: PORTFOLIO_SK
+        description: "Portfolio surrogate key."
+
+      - name: TICKER
+        description: "Portfolio stock ticker."
+
+      - name: QUANTITY
+        description: "Number of shares held."
+
+      - name: WEIGHT
+        description: "Portfolio allocation percentage."
+
+      - name: INVESTMENT_CATEGORY
+        description: "Business classification of the holding."
+
+  - name: fact_portfolio_prices
+    description: "Daily price facts for portfolio securities."
+
+    columns:
+      - name: DATE_SK
+        description: "Foreign key to dim_date."
+
+      - name: STOCK_SK
+        description: "Foreign key to dim_stock."
+
+      - name: PORTFOLIO_SK
+        description: "Foreign key to dim_portfolio."
+
+      - name: CLOSE_PRICE
+        description: "Closing price."
+
+      - name: DAILY_RETURN_PERCENT
+        description: "Daily return percentage."
+
+      - name: DAILY_VOLATILITY
+        description: "Difference between high and low price."
+
+      - name: MARKET_DIRECTION
+        description: "UP, DOWN or NO CHANGE."
+
+  - name: mart_portfolio_summary
+    description: "Business reporting mart for portfolio analytics."
+
+    columns:
+      - name: TICKER
+        description: "Stock ticker."
+
+      - name: MARKET_VALUE
+        description: "Quantity × Latest Close Price."
+
+      - name: DAILY_RETURN_PERCENT
+        description: "Latest daily return."
+
+      - name: DAILY_VOLATILITY
+        description: "Latest trading volatility."

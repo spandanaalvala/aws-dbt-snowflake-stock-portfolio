@@ -1,0 +1,21 @@
+version: 2
+
+exposures:
+
+  - name: portfolio_dashboard
+    label: Portfolio Performance Dashboard
+    type: dashboard
+    maturity: high
+
+    url: https://company-dashboard-url.com
+
+    description: >
+      Dashboard used by portfolio managers to analyze portfolio
+      performance, market value, returns, and volatility.
+
+    owner:
+      name: Data Engineering Team
+      email: dataengineering@company.com
+
+    depends_on:
+      - ref('mart_portfolio_summary')

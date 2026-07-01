@@ -1,0 +1,12 @@
+sources:
+  - name: staging
+    database: STOCKPORTFOLIO  
+    schema: staging  
+    tables:
+      - name: DOW_JONES
+      - name: NASDAQ
+      - name: PORTFOLIO
+      - name: PORTFOLIO_PRICES
+      - name: SP500
+
+ 

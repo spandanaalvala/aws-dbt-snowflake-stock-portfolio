@@ -1,0 +1,40 @@
+aws_dbt_snowflake_project:
+  outputs:
+    dev:
+      account: RDPAADX-WB30295
+      database: STOCKPORTFOLIO
+      password: DataEngineer2025
+      role: ACCOUNTADMIN
+      schema: dbt_schema
+      threads: 1
+      type: snowflake
+      user: ESHU
+      warehouse: COMPUTE_WH
+  target: dev
+ecommerce_dbt:
+  outputs:
+    dev:
+      account: OEKDRIA-BA06311
+      client_session_keep_alive: false
+      database: ECOMMERCE_DBT
+      password: DataScienceModel7
+      role: SFT_DATA_ENGINEER
+      schema: STAGE
+      threads: 4
+      type: snowflake
+      user: SAM
+      warehouse: DBT_WH
+  target: dev
+spand_dbt_project:
+  outputs:
+    dev:
+      account: RDPAADX-WB30295
+      database: LOAN_RISK_DB
+      password: DataEngineer2025
+      role: ACCOUNTADMIN
+      schema: RAW
+      threads: 4
+      type: snowflake
+      user: ESHU
+      warehouse: COMPUTE_WH
+  target: dev
